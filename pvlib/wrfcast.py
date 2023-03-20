@@ -2,6 +2,7 @@
 The 'forecast' module contains class definitions for
 retreiving forecasted data from UNIDATA Thredd servers.
 '''
+import os
 import datetime
 from netCDF4 import num2date, Dataset
 import numpy as np
@@ -731,7 +732,7 @@ class WRF(ForecastModel):
             self.query_variables = query_variables
 
         # Absolute path to wrfout data file
-        datapath = wrfout_dir + wrfout_file
+        datapath = os.path.join(wrfout_dir, wrfout_file)
 
         # Read in the wrfout file using the netCDF4.Dataset method 
         # (You could probably also do this with an xarray method)
